@@ -1,17 +1,18 @@
 namespace loja{
    
-    let p = new Produto();
-    p.nome = document.getElementById("nomeProduto").textContent;
-    p.preco = 100;
-    p.taxa = 20;
+    let nome = document.getElementById("nomeProduto") as HTMLInputElement;
+    const preco = document.getElementById("PrecoProduto") as HTMLInputElement;
+    const taxa = document.getElementById("TaxaProduto") as HTMLInputElement;
+    
+    document.getElementById('btn')?.addEventListener('click',  ()=> {
 
-    let n =document.getElementById("nomeProduto") as HTMLInputElement;;
+       // p.nome = nome.value; 
 
-    const no = n.value;
+       let p = new Produto();
+       p.nome = nome.value; 
+       p.preco = parseFloat(preco.value);
+       p.taxa = parseFloat(taxa.value);
 
-   
-    document.getElementById('btn')?.addEventListener('click', clicar);
-    function clicar() {
         document.getElementById("nome").textContent = p.nome;
         document.getElementById("preco").textContent = p.preco.toString();
         document.getElementById("taxa").textContent = p.taxa.toString();
@@ -20,8 +21,8 @@ namespace loja{
 
         let display = document.getElementById("display");
         display.innerHTML=`
-        <h2> ${no}<h2>
+        
         <h2>         ${p.CalcularPrecoFinal()},00 reais você irá gastar</h2>
-        `};
+        `});
     }
 
